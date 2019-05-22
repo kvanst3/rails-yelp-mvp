@@ -1,8 +1,18 @@
 <div class="container">
   <h1><%= @restaurant.name %></h1>
-  <p><%= @restaurant.address %></p>
-  <p><%= @restaurant.phone_number %></p>
-  <p><%= @restaurant.category %></p>
+  <p style="text-align: right"><%= link_to '+ Add Review', new_restaurant_review_path(@restaurant) %></p>
+  <p>Address: <%= @restaurant.address %></p>
+  <p>Phone#: <%= @restaurant.phone_number %></p>
+  <p>Category: <%= @restaurant.category %></p>
+  <p>Chef: <%= @restaurant.chef %></p>
+
+  <p>Reviews:</p>
+  <% @restaurant.reviews.each do |review| %>
+    <ul style="list-style: none">
+      <li>Rating: <%= review.rating %></li>
+      <li>Comment: <%= review.content %></li>
+    </ul>
+  <% end %>
 
   </<br>
 
